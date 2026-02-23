@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: backend-config
 data:
-  DB_HOST: DB_HOST
-  DB_PORT: DB_PORT
-  DB_NAME: DB_NAME
+  DB_HOST: database-1.cx0g4sye0xfn.us-east-2.rds.amazonaws.com
+  DB_PORT: 3306
+  DB_NAME: student_db
