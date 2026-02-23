@@ -4,5 +4,5 @@ metadata:
   name: backend-config
 data:
   DB_HOST: database-1.cx0g4sye0xfn.us-east-2.rds.amazonaws.com
-  DB_PORT: 3306
+  DB_PORT: "3306"
   DB_NAME: student_db
