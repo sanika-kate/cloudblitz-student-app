@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOCKER_CREDS = credentials('docker-creds')
-        BACKEND_IMAGE = "yourdockerhub/backend-app"
-        FRONTEND_IMAGE = "yourdockerhub/frontend-app"
+        BACKEND_IMAGE = "sanikakate2002/backendapp:1.1"
+        FRONTEND_IMAGE = "sanikakate2002/frontendapp:1.0"
     }
 
     stages {
