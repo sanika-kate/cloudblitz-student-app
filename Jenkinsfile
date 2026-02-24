@@ -3,17 +3,9 @@ pipeline {
 
     environment {
         RDS_URL = "jdbc:mariadb://database-1.cx0g4sye0xfn.us-east-2.rds.amazonaws.com:3306/student_db"
-        DB_USER = "admin"
-        DB_PASS = "sanika273112"
     }
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/sanika-kate/cloudblitz-student-app.git'
-            }
-        }
 
         stage('Build Backend Image') {
             steps {
@@ -38,14 +30,20 @@ pipeline {
 
         stage('Run Backend') {
             steps {
-                sh '''
-                docker run -d --name backend \
-                -p 8080:8080 \
-                -e SPRING_DATASOURCE_URL=$RDS_URL \
-                -e SPRING_DATASOURCE_USERNAME=$DB_USER \
-                -e SPRING_DATASOURCE_PASSWORD=$DB_PASS \
-                backend-app
-                '''
+                withCredentials([usernamePassword(
+                    credentialsId: 'rds-creds',
+                    usernameVariable: 'DB_USER',
+                    passwordVariable: 'DB_PASS'
+                )]) {
+                    sh '''
+                    docker run -d --name backend \
+                    -p 8080:8080 \
+                    -e SPRING_DATASOURCE_URL=$RDS_URL \
+                    -e SPRING_DATASOURCE_USERNAME=$DB_USER \
+                    -e SPRING_DATASOURCE_PASSWORD=$DB_PASS \
+                    backend-app
+                    '''
+                }
             }
         }
 
