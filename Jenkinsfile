@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        RDS_URL = "jdbc:mariadb://database-1.cx0g4sye0xfn.us-east-2.rds.amazonaws.com:3306/student_db"
+        RDS_URL = "jdbc:mariadb://database-1.cx0g4sye0xfn.us-east-2.rds.amazonaws.com:3306/student_db?sslMode=REQUIRED"
     }
 
     stages {
