@@ -37,7 +37,7 @@ pipeline {
                 )]) {
                     sh '''
                     docker run -d --name backend \
-                    -p 8081:8080 \
+                    -p 8080:8080 \
                     -e SPRING_DATASOURCE_URL=$RDS_URL \
                     -e SPRING_DATASOURCE_USERNAME=$DB_USER \
                     -e SPRING_DATASOURCE_PASSWORD=$DB_PASS \
