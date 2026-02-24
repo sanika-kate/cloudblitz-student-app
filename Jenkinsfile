@@ -51,7 +51,7 @@ pipeline {
             steps {
                 sh '''
                 docker run -d --name frontend \
-                -p 80:80 \
+                -p 3000:80 \
                 frontend-app
                 '''
             }
